@@ -4,7 +4,7 @@ import axios from "axios";
 function Move(props) {
 	return (
 		<div>
-			<p>{props.ame}</p>
+			<p>{props.name}</p>
 		</div>
 	);
 }
