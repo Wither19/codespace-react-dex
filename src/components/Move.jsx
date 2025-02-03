@@ -5,6 +5,7 @@ function Move(props) {
 	return (
 		<div>
 			<p>{props.name}</p>
+			{!props.name && "pootis"}
 		</div>
 	);
 }
