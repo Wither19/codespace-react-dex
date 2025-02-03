@@ -155,13 +155,16 @@ function PokemonMenu() {
 						artFunc={() => setArtSource((prev) => !prev)}
 						artChoice={artChoiceText}
 					/>
+				</div>
+				<div style={{ width: 500, minWidth: 500, maxWidth: 500 }}>
+					<FlavorText
+						text={flavor && flavor.flavor_text}
+						game={flavor && flavor.version.name.replace("-", " ")}
+					/>
+					<br />
+					<br />
 					<MoveList moves={pkmn.moves} />
 				</div>
-
-				<FlavorText
-					text={flavor && flavor.flavor_text}
-					game={flavor && flavor.version.name.replace("-", " ")}
-				/>
 			</div>
 		)
 	);

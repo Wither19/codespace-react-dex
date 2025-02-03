@@ -97,6 +97,13 @@ function App() {
 		setLimit((prev) => Math.min(itemLimit + 200, 1025));
 	};
 
+	const pokemonButtonSelected = (event) => {
+		setPokemonID(event.currentTarget.id);
+		setTimeout(() => {
+			setShowDetails(true);
+		}, 500);
+	};
+
 	return (
 		<div>
 			<div className="pokemon-list-wrapper">
@@ -174,12 +181,7 @@ function App() {
 												number={index + starts[names.indexOf(searchString)] + 1}
 												name={item.name}
 												itemSize={itemSize}
-												clicky={(event) => {
-													setPokemonID(event.currentTarget.id);
-													setTimeout(() => {
-														setShowDetails(true);
-													}, 500);
-												}}
+												clicky={pokemonButtonSelected}
 											/>
 										</>
 									))
@@ -195,12 +197,7 @@ function App() {
 													number={index + 1}
 													name={item.name}
 													itemSize={itemSize}
-													clicky={(event) => {
-														setPokemonID(event.currentTarget.id);
-														setTimeout(() => {
-															setShowDetails(true);
-														}, 500);
-													}}
+													clicky={pokemonButtonSelected}
 												/>
 											)}
 										</>
@@ -227,12 +224,7 @@ function App() {
 												number={index + 1}
 												name={item.name}
 												itemSize={itemSize}
-												clicky={(event) => {
-													setPokemonID(event.currentTarget.id);
-													setTimeout(() => {
-														setShowDetails(true);
-													}, 500);
-												}}
+												clicky={pokemonButtonSelected}
 											/>
 
 											{index == itemLimit - 1 && itemLimit < 1025 && (
