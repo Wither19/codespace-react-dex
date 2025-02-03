@@ -126,17 +126,37 @@ function App() {
 									e.currentTarget.value;
 								setSearch(e.currentTarget.value);
 							}}>
-							<option value=""></option>
-							<option value="kanto">Kanto</option>
-							<option value="johto">Johto</option>
-							<option value="hoenn">Hoenn</option>
-							<option value="sinnoh">Sinnoh</option>
-							<option value="unova">Unova</option>
-							<option value="kalos">Kalos</option>
-							<option value="alola">Alola</option>
-							<option value="galar">Galar</option>
-							<option value="hisui">Hisui</option>
-							<option value="paldea">Paldea</option>
+							<option key="none" value=""></option>
+							<option key="kanto" value="kanto">
+								Kanto
+							</option>
+							<option key="johto" value="johto">
+								Johto
+							</option>
+							<option key="hoenn" value="hoenn">
+								Hoenn
+							</option>
+							<option key="sinnoh" value="sinnoh">
+								Sinnoh
+							</option>
+							<option key="unova" value="unova">
+								Unova
+							</option>
+							<option key="kalos" value="kalos">
+								Kalos
+							</option>
+							<option key="alola" value="alola">
+								Alola
+							</option>
+							<option key="galar" value="galar">
+								Galar
+							</option>
+							<option key="hisui" value="hisui">
+								Hisui
+							</option>
+							<option key="paldea" value="paldea">
+								Paldea
+							</option>
 						</select>
 					</div>
 					<div className="pokemon-list">
@@ -163,21 +183,13 @@ function App() {
 											/>
 										</>
 									))
-							: pokemonList &&
+							: searchString.length != 0 && !isRegionKeyword
+							? pokemonList &&
 							  pokemonList
-									.filter((_, index) => index < itemLimit)
+									.filter((_, index) => index < 1025)
 									.map((item, index) => (
 										<>
-											{searchString.length == 0 &&
-												regionsList.map(
-													(region) =>
-														index == region.start && (
-															<FlexInterrupt useId>{region.name}</FlexInterrupt>
-														)
-												)}
-
-											{searchString.length == 0 ||
-											item.name.replace("-", " ").includes(searchString) ? (
+											{item.name.replace("-", " ").includes(searchString) && (
 												<PokemonListItem
 													key={index + 1}
 													number={index + 1}
@@ -190,7 +202,39 @@ function App() {
 														}, 500);
 													}}
 												/>
-											) : null}
+											)}
+										</>
+									))
+							: pokemonList &&
+							  pokemonList
+									.filter((_, index) => index < itemLimit)
+									.map((item, index) => (
+										<>
+											{searchString.length == 0 &&
+												regionsList.map(
+													(region) =>
+														index == region.start && (
+															<FlexInterrupt
+																key={region.name + "-interrupt"}
+																useId>
+																{region.name}
+															</FlexInterrupt>
+														)
+												)}
+
+											<PokemonListItem
+												key={index + 1}
+												number={index + 1}
+												name={item.name}
+												itemSize={itemSize}
+												clicky={(event) => {
+													setPokemonID(event.currentTarget.id);
+													setTimeout(() => {
+														setShowDetails(true);
+													}, 500);
+												}}
+											/>
+
 											{index == itemLimit - 1 && itemLimit < 1025 && (
 												<FlexInterrupt>
 													<button className="load-more-btn" onClick={loadMore}>
