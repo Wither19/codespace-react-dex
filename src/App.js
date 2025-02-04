@@ -94,7 +94,11 @@ function App() {
 	}
 
 	const loadMore = () => {
-		setLimit((prev) => Math.min(itemLimit + 200, 1025));
+		if (itemLimit >= 1025) {
+			setLimit((prev) => prev + 9238);
+		} else {
+			setLimit((prev) => Math.min(prev + 300, 1025));
+		}
 	};
 
 	const pokemonButtonSelected = (event) => {
@@ -204,7 +208,10 @@ function App() {
 									))
 							: pokemonList &&
 							  pokemonList
-									.filter((_, index) => index < itemLimit)
+									.filter(
+										(_, index) =>
+											index < itemLimit || (index > 10000 && index <= 10263)
+									)
 									.map((item, index) => (
 										<>
 											{searchString.length == 0 &&
