@@ -1,29 +1,29 @@
 @media screen and (prefers-color-scheme: light) {
-    body {
-      background-color: white;
-      color: black;
-    }
-    .pokemon-list-item {
-      background: lightgray;
-      color: black;
-    }
-    .back-btn {
-      color: black;
-    }
-    .sprite {
-      filter: drop-shadow(2px 2px 2px black);
-    }
-  
-    .bar {
-      filter: drop-shadow(2px 2px 2px black);
-    }
-  
-    .settings-page {
-      background: white;
-    }
-  
-    .icon {
-      width: 75px;
-      height: 75px;
-    }
-  }
+	body {
+		background-color: white;
+		color: black;
+	}
+	.pokemon-list-item {
+		background: lightgray;
+		color: black;
+	}
+	.back-btn {
+		color: black;
+	}
+	.sprite {
+		filter: drop-shadow(2px 2px 2px black);
+	}
+
+	.bar {
+		filter: drop-shadow(2px 2px 2px black);
+	}
+
+	.settings-page {
+		background: white;
+	}
+
+	.icon {
+		width: 75px;
+		height: 75px;
+	}
+}
