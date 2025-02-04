@@ -57,7 +57,7 @@ function App() {
 	const [pokemonList, setPokemonList] = useState([]);
 	const [pokemonID, setPokemonID] = useState(1);
 	const [itemSize, setItemSize] = useState("medium");
-	const [itemLimit, setLimit] = useState(200);
+	const [itemLimit, setLimit] = useState(300);
 	const [searchString, setSearch] = useState("");
 
 	// Conditional to find if the searchbar input matches a search preset (For regions)
@@ -208,10 +208,7 @@ function App() {
 									))
 							: pokemonList &&
 							  pokemonList
-									.filter(
-										(_, index) =>
-											index < itemLimit || (index > 10000 && index <= 10263)
-									)
+									.filter((_, index) => index < itemLimit && index > 10000)
 									.map((item, index) => (
 										<>
 											{searchString.length == 0 &&
