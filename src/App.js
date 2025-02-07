@@ -208,7 +208,7 @@ function App() {
 									))
 							: pokemonList &&
 							  pokemonList
-									.filter((_, index) => index < itemLimit && index > 10000)
+									.filter((_, index) => index < itemLimit || index > 10000)
 									.map((item, index) => (
 										<>
 											{searchString.length == 0 &&
@@ -225,13 +225,13 @@ function App() {
 
 											<PokemonListItem
 												key={index + 1}
-												number={index + 1}
+												number={index > 1024 ? index + 8975 : index + 1}
 												name={item.name}
 												itemSize={itemSize}
 												clicky={pokemonButtonSelected}
 											/>
 
-											{index == itemLimit - 1 && itemLimit < 1025 && (
+											{index == itemLimit - 1 && itemLimit < 10263 && (
 												<FlexInterrupt>
 													<button className="load-more-btn" onClick={loadMore}>
 														Load More
