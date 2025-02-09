@@ -1,13 +1,5 @@
 import "./styles/app.scss";
 
-import "./styles/app-desktop.scss";
-import "./styles/app-chromebook.scss";
-
-import "./styles/app-light.scss";
-import "./styles/app-dark.scss";
-
-import "./styles/type-icons.scss";
-
 import React from "react";
 
 import { createContext, useContext, useEffect, useState } from "react";
