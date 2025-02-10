@@ -130,36 +130,11 @@ function App() {
 								setSearch(e.currentTarget.value);
 							}}>
 							<option key="none" value=""></option>
-							<option key="kanto" value="kanto">
-								Kanto
-							</option>
-							<option key="johto" value="johto">
-								Johto
-							</option>
-							<option key="hoenn" value="hoenn">
-								Hoenn
-							</option>
-							<option key="sinnoh" value="sinnoh">
-								Sinnoh
-							</option>
-							<option key="unova" value="unova">
-								Unova
-							</option>
-							<option key="kalos" value="kalos">
-								Kalos
-							</option>
-							<option key="alola" value="alola">
-								Alola
-							</option>
-							<option key="galar" value="galar">
-								Galar
-							</option>
-							<option key="hisui" value="hisui">
-								Hisui
-							</option>
-							<option key="paldea" value="paldea">
-								Paldea
-							</option>
+							{names.map((name) => (
+								<option key={name} value={name}>
+									{name.charAt(0).toUpperCase() + name.slice(1)}
+								</option>
+							))}
 						</select>
 					</div>
 					<div className="pokemon-list">
